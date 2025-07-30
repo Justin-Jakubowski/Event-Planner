@@ -1,0 +1,89 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}Plannerly{% endblock title %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+    <header class="text-center text-white d-flex masthead" style="background-image:url('/static/assets/img/header.jpg');">
+        <div class="container my-auto">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <h1 class="text-uppercase"><strong style="font-size: 36px;">{{ ename }}</strong></h1>
+                    <hr>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Manage Scheduling</h4>
+                    <a class="btn btn-primary btn-xl" role="button" href="{{ url_for('createTask', eid=eid) }}" style="margin: 25px;margin-top: 10px;">Create a new scheduling task</a>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th id="DateRangeHeader">Scheduling Task Dates</th>
+                                    <th id="ModifyHeader" style="padding: 8px;">Modify</th>
+                                    <th id="DetailsHeader">View Details</th>
+                                    <th id="DeleteHeader">Delete</th>
+                                    <th id="ResponseCountHeader"># of Responses</th>
+                                    <th id="DeadlineHeader">Deadline</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for task in tableData %}
+                                    <tr>
+                                        <td>{{ task['startdate'].strftime('%b %d, %Y') }} - {{ task['enddate'].strftime('%b %d, %Y') }}</td>
+                                        <td>
+                                            <a href="{{ url_for('modifyTask', esid=task['esid']) }}" class="btn btn-primary" type="button">
+                                                <img width="auto" height="20" src="static/assets/img/modifybutton.png">
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="{{ url_for('viewDetails', esid=task['esid']) }}" class="btn btn-primary" type="button">
+                                                <img width="auto" height="20" src="static/assets/img/detailsbutton.png">
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="{{ url_for('deleteTask', esid=task['esid']) }}" class="btn btn-primary" type="button">
+                                                <img width="20" height="20" src="static/assets/img/deletebutton.png">
+                                            </a>
+                                        </td>
+                                        <td>{{ task['responsecount'] }} of {{ task['totalresponses'] }}</td>
+                                        <td>
+                                            {% if task['responsedeadline'] %}
+                                                {{ task['responsedeadline'].strftime('%b %d, %Y') }}
+                                            {% else %}
+                                                N/A
+                                            {% endif %}
+                                        </td>                                        
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 text-center mx-auto">
+                    <h2 class="section-heading">Let's Get In Touch!</h2>
+                    <hr class="my-4">
+                    <p class="mb-5">Any questions, problems, or suggestions about our platform? Feel free to reach out to us whenever!</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 text-center ms-auto"><i class="fa fa-phone fa-3x mb-3 sr-contact" data-aos="zoom-in" data-aos-duration="300" data-aos-once="true"></i>
+                    <p>123-456-6789</p>
+                </div>
+                <div class="col-lg-4 text-center me-auto"><i class="fa fa-envelope-o fa-3x mb-3 sr-contact" data-aos="zoom-in" data-aos-duration="300" data-aos-delay="300" data-aos-once="true"></i>
+                    <p><a href="mailto:plannerly@plannerly.com">plannerly@plannerly.com</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

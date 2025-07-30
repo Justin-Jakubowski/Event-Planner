@@ -1,0 +1,31 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}Plannerly{% endblock title %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+    <header class="text-center text-white d-flex masthead" style="background-image:url('/static/assets/img/header.jpg');">
+        <!--body-->
+    </header>
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 text-center mx-auto">
+                    <h2 class="section-heading">Let's Get In Touch!</h2>
+                    <hr class="my-4">
+                    <p class="mb-5">Any questions, problems, or suggestions about our platform? Feel free to reach out to us whenever!</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 text-center ms-auto"><i class="fa fa-phone fa-3x mb-3 sr-contact" data-aos="zoom-in" data-aos-duration="300" data-aos-once="true"></i>
+                    <p>123-456-6789</p>
+                </div>
+                <div class="col-lg-4 text-center me-auto"><i class="fa fa-envelope-o fa-3x mb-3 sr-contact" data-aos="zoom-in" data-aos-duration="300" data-aos-delay="300" data-aos-once="true"></i>
+                    <p><a href="mailto:plannerly@plannerly.com">plannerly@plannerly.com</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

@@ -1,0 +1,67 @@
+{% extends "layouts/base.html" %}
+{% block title %}Modify Event{% endblock title %}
+
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+<header class="text-center text-white d-flex masthead" style="background-image:url('/static/assets/img/header.jpg');">
+    <div class="container my-auto">
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <h1 class="text-uppercase"><strong style="font-size: 36px;">MODIFY EVENT</strong></h1>
+                <hr>
+            </div>
+        </div>
+
+        <div class="card" style="padding-top: 40px; padding-bottom: 40px;">
+            <form action="{{url_for('modifyEventSubmit')}}" method="post">
+
+                <label for="eid">Event ID<span>*</span>:</label>
+                <input type="text" id="eid" name="eid" value="{{ event.eid }}" readonly><br><br>
+
+                <label for="event_name">Name of Event<span>*</span>:</label>
+                <input type="text" id="event_name" name="ename" value="{{ event.ename }}" required><br><br>
+
+                <label for="event_location">Location of Event<span>*</span>:</label>
+                <input type="text" id="event_location" name="elocation" value="{{ event.elocation }}"
+                    required><br><br>
+
+                <label for="zoom_link">Zoom Link (optional):</label>
+                <input type="text" id="zoom_link" name="zoom" value="{{ event.zoom }}"><br><br>
+
+                <label for="additional_notes">Additional Notes (optional):</label><br>
+                <input type ="text" id="additional_notes" name="notes" rows="4"
+                    cols="50" value="{{ event.notes }}"><br><br>
+
+                <label for="final_date">Final Date:</label>
+                <input type="date" id="final_date" name="efinaldate" required><br><br>
+
+                <input type="submit" value="Update">
+            </form>
+        </div>
+    </div>
+
+</header>
+<section id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 text-center mx-auto">
+                <h2 class="section-heading">Let's Get In Touch!</h2>
+                <hr class="my-4">
+                <p class="mb-5">Any questions, problems, or suggestions about our platform? Feel free to reach out to us
+                    whenever!</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 text-center ms-auto"><i class="fa fa-phone fa-3x mb-3 sr-contact" data-aos="zoom-in"
+                    data-aos-duration="300" data-aos-once="true"></i>
+                <p>123-456-6789</p>
+            </div>
+            <div class="col-lg-4 text-center me-auto"><i class="fa fa-envelope-o fa-3x mb-3 sr-contact"
+                    data-aos="zoom-in" data-aos-duration="300" data-aos-delay="300" data-aos-once="true"></i>
+                <p><a href="mailto:plannerly@plannerly.com">plannerly@plannerly.com</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
