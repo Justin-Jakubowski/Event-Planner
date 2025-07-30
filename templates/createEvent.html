@@ -1,0 +1,63 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}Plannerly{% endblock title %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+    <header class="text-center text-white d-flex masthead" style="background-image:url('/static/assets/img/header.jpg');">
+        <div class="container my-auto">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <h1 class="text-uppercase"><strong style="font-size: 36px;">CREATE AN EVENT</strong></h1>
+                    <hr>
+                </div>
+            </div>
+            <div class="card" style="padding-top: 40px; padding-bottom: 40px;">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 d-flex mx-auto justify-content-center">
+                            <a class="btn btn-primary" role="button" href="{{ url_for('eventOverview') }}" style="margin: 25px; margin-top: 0px; margin-bottom: 50px; width: 200px;">View Existing Events</a>
+                        </div>
+                    </div>
+                    <form action="{{url_for('eventSchedulingSubmit')}}" method="post">
+                        <label for="event_name">Name of Event<span>*</span>:</label>
+                        <input type="text" id="event_name" name="event_name" required><br><br>
+                    
+                        <label for="event_location">Location of Event<span>*</span>:</label>
+                        <input type="text" id="event_location" name="event_location" required><br><br>
+                    
+                        <label for="zoom_link">Zoom Link (optional):</label>
+                        <input type="text" id="zoom_link" name="zoom_link"><br><br>
+                    
+                        <label for="additional_notes">Additional Notes (optional):</label><br>
+                        <textarea id="additional_notes" name="additional_notes" rows="4" cols="50"></textarea><br><br>
+                    
+                        <button class="btn btn-primary btn-xl" type="submit" name="Submit" role="button" style="margin: 25px;margin-top: 10px;margin-bottom: 0px;">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 text-center mx-auto">
+                    <h2 class="section-heading">Let's Get In Touch!</h2>
+                    <hr class="my-4">
+                    <p class="mb-5">Any questions, problems, or suggestions about our platform? Feel free to reach out to us whenever!</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 text-center ms-auto"><i class="fa fa-phone fa-3x mb-3 sr-contact" data-aos="zoom-in" data-aos-duration="300" data-aos-once="true"></i>
+                    <p>123-456-6789</p>
+                </div>
+                <div class="col-lg-4 text-center me-auto"><i class="fa fa-envelope-o fa-3x mb-3 sr-contact" data-aos="zoom-in" data-aos-duration="300" data-aos-delay="300" data-aos-once="true"></i>
+                    <p><a href="mailto:plannerly@plannerly.com">plannerly@plannerly.com</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}
+

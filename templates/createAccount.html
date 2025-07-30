@@ -1,0 +1,66 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+
+<header class="text-center text-white d-flex masthead" style="background-image:url('/static/assets/img/header.jpg');">
+
+    <div class="container position-relative">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-8 col-lg-6 col-xl-5 col-xxl-4">
+                <div class="card mb-5">
+                    <div class="card-body p-sm-5">
+                        <img class="d-md-flex align-self-center justify-content-md-center" id="Create" src="\static\assets\img\createaccount.png" width="149" height="130">
+                        <h2 class="text-center mb-4">Create Account</h2>
+                        <p>Required*</p>
+        {% with messages=get_flashed_messages() %}
+        
+            {% if messages %}
+                <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>  
+                {% endfor %}
+                </ul>
+            {% endif %}
+
+        {% endwith %}
+                        <p style="margin-bottom: -1px;">First Name*</p>
+                        <form method="post" action="{{ url_for('accountCreated') }}">
+                            <div class="mb-3"><input class="form-control" type="text" id="name-2" name="fname"
+                                    placeholder="Johnny" value="{{ fiName }}"></div>
+                            <p style="margin-bottom: -1px;">Last Name*</p><input class="form-control" type="text"
+                                id="name-1" name="lname" placeholder="appleseed" value="{{ laName }}">
+                            <div class="mb-3"></div>
+                            <p style="margin-bottom: -1px;">Email*</p><input class="form-control" type="email"
+                                id="email-2" name="email" placeholder="name@domain.com" value="{{ elMail }}"
+                                style="margin-bottom: 22px;">
+                            <p style="margin-bottom: -1px;">Password*</p><input class="form-control" type="password"
+                                style="margin-bottom: 20px;margin-top: 2px;" placeholder="Password*" name="upassword">
+                            <p style="margin-bottom: -1px;">Number</p><input class="form-control" type="tel"
+                                style="margin-top: 3px;margin-bottom: 23px;" placeholder="1234567890" name="number">
+                            <p style="margin-bottom: -13px;">Gender</p>
+                            <div class="mb-3"></div><select class="form-select" name="gender" style="margin-bottom: 22px;">
+                                <optgroup label="Gender">
+                                    <option value="0" selected="">Select a Gender</option>
+                                    <option value="M">Male</option>
+                                    <option value="F">Female</option>
+                                    <option value="0">Prefer not to say/other</option>
+                                </optgroup>
+                            </select>
+                            <p style="margin-bottom: -1px;">Date of Birth*</p><input class="form-control" type="date"
+                                style="margin-bottom: 22px;margin-top: 0px;" name="dob" value="{{ dateofb }}" >
+                            <div class="input-group"></div>
+                            <div><button class="btn btn-primary d-block w-100" type="submit"
+                                    style="background: var(--bs-orange);">Create Account</button></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            var currentTime = new Date;
+        </script>
+    </div>
+</header>
+
+
+{% endblock %}

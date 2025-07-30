@@ -1,0 +1,99 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}Plannerly{% endblock title %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<header class="text-center text-white d-flex masthead" style="background-image:url('/static/assets/img/header.jpg');">
+    <div class="container my-auto">
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <h1 class="text-uppercase"><strong style="font-size: 36px;">EVENT OVERVIEW</strong></h1>
+                <hr>
+            </div>
+        </div>
+
+        <div class="card" style="padding: 40px;">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Event ID</th>
+                            <th>Name</th>
+                            <th>Location</th>
+                            <th>Notes</th>
+                            <th>Zoom Link</th>
+                            <th>Final Date</th>
+                            <th>Modify Event</th>
+                            <th>Add Guests</th>
+                            <th>Manage Tasks</th>
+                            <th>Visualize Guests</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for event in events %}
+                        <tr>
+                            <td>{{ event['eid']}}</td>
+                            <td>{{ event['ename']}}</td>
+                            <td>{{ event['elocation'] }}</td>
+                            <td>{{ event['notes'] }}</td>
+                            <td>{{ event['zoom']}}</td>
+                            <td>{{event['efinaldate']}}</td>
+                            <td>
+                                <!--<a href="/modifyEvent/{{ event['eid'] }}">Modify Event</a>-->
+                                <form action="{{ url_for('modifyEvent') }}" method="POST">
+                                    <input type="hidden" name="eid" value="{{ event['eid'] }}">
+                                    <button type="submit">Modify</button>
+                                </form>
+                            </td>
+                            <td>
+                                <form action ="{{url_for('addGuest')}}" method="POST">
+                                    <input type="hidden" value="{{event['eid']}}" name="eid">
+                                    <button type="submit">Add Guests</button>
+                                </form>
+                            </td>
+                            <td>
+                                <form action="{{ url_for('manageTasks') }}" method="POST">
+                                    <input type="hidden" value="{{event['eid']}}" name="eid">
+                                    <button type="submit">Schedule</button>
+                                </form>
+                            </td>
+                            <td>
+                                <form action="{{url_for('genderVisualization')}}" method="POST">
+                                    <input type="hidden" value="{{event['eid']}}" name="eid">
+                                    <button type="submit">Visualize</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+</header>
+<section id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 text-center mx-auto">
+                <h2 class="section-heading">Let's Get In Touch!</h2>
+                <hr class="my-4">
+                <p class="mb-5">Any questions, problems, or suggestions about our platform? Feel free to reach out to us
+                    whenever!</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 text-center ms-auto"><i class="fa fa-phone fa-3x mb-3 sr-contact" data-aos="zoom-in"
+                    data-aos-duration="300" data-aos-once="true"></i>
+                <p>123-456-6789</p>
+            </div>
+            <div class="col-lg-4 text-center me-auto"><i class="fa fa-envelope-o fa-3x mb-3 sr-contact"
+                    data-aos="zoom-in" data-aos-duration="300" data-aos-delay="300" data-aos-once="true"></i>
+                <p><a href="mailto:plannerly@plannerly.com">plannerly@plannerly.com</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

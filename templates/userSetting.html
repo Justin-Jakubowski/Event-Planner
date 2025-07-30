@@ -1,0 +1,61 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+
+
+
+<header class="text-center text-white d-flex masthead" style="background-image:url('/static/assets/img/header.jpg');">
+    <div class="container my-auto">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <h1 class="text-uppercase"><strong style="padding-top: 0px;margin-top: 1px;">User Settings</strong>
+                    </h1>
+                    <hr style="margin-bottom: 20px;margin-top: 21px;">
+                    <a href="{{ url_for('logout') }}">
+                    <button class="btn btn-primary" type="button">Logout</button> </a>
+                    <a href="{{ url_for('visualizeUsers') }}">
+                    <button class="btn btn-primary" type="button">Visualize Users by Day</button>
+                    </a>
+                    <a href="{{ url_for('deleteProfile') }}">
+                        <button class="btn btn-primary" type="button" >Delete Profile</button></a>
+                </div>
+            </div>
+            <div class="col-lg-8 mx-auto">
+                <div class="card">
+                    <div class="card-body"><img src="\static\assets\img\x.png" width="98" height="86">
+                        <h6 class="text-muted card-subtitle mb-2">Your Profile</h6>
+                        <h4 class="card-title">User Settings</h4>
+                        <form action="{{ url_for('editProfile') }}" method="post">
+                        <p class="text-start card-text" style="padding-right: 0px;margin-bottom: 0px;">First Name:<input
+                                type="text" placeholder="First" style="margin-left: 214px;" value="{{ user['firstname'] }}" name="fname"></p>
+                        <p class="text-start card-text" style="padding-right: 0px;margin-bottom: 0px;">Last Name:<input
+                                type="text" placeholder="Last" style="padding-left: 2px;margin-left: 217px;" value="{{ user['lastname'] }}" name="lname"></p>
+                        <p class="text-start card-text" style="padding-right: 0px;margin-bottom: 0px;">Number:<input
+                                type="tel" placeholder="1234567890" style="margin-left: 240px;" value="{{ user['phone'] }}" name="phone"></p>
+                        <p class="text-start card-text" style="padding-right: 0px;margin-bottom: 0px;">Current
+                            Password:<input type="password" style="margin-left: 152px;" name="old"></p>
+                        <p class="text-start card-text" style="padding-right: 0px;margin-bottom: 0px;">New
+                            Password:<input type="password" style="margin-left: 182px;" name="new"></p>
+                        <p class="text-start card-text" style="padding-right: 0px;margin-bottom: 0px;">Confirm New
+                            Password:<input type="password" style="margin-left: 103px;" name="confNew"></p><button
+                            class="btn btn-primary" type="submit">Save</button>
+                        </form>
+
+                        {% with messages=get_flashed_messages() %}
+        
+                            {% if messages %}
+                                 <ul>
+                                 {% for message in messages %}
+                                    <li>{{ message }}</li>  
+                                {% endfor %}
+                                 </ul>
+                            {% endif %}
+            
+                         {% endwith %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+{% endblock %}
