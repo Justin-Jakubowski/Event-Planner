@@ -73,19 +73,19 @@ Contains the data models for events, tasks, and guests. These models interact wi
 
 Houses the HTML templates used throughout the app. Key pages include:
 
-**createAccount.html**
+createAccount.html
  → Create a user account
 
-**createEvent.html**
+createEvent.html
  → Define a new event
 
-**addGuest.html**
+addGuest.html
  → Add guests and manage RSVP invitations
 
-**genderVisualization.html**
+genderVisualization.html
  → Display event guest gender statistics
 
-**eventOverview.html**
+eventOverview.html
  → Overview of event details and tasks
 
 page-403.html
