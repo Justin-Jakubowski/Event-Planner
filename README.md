@@ -49,43 +49,43 @@ Plannerly/
 
 📖 Detailed File Overview
 
-__init__.py
+**__init__.py**
 
 Initializes the Flask app and sets up the connection to the Azure database (hosted by Virginia Tech).
 
-views.py
+**views.py**
 
 Handles rendering HTML templates and processing user input. When users submit forms (via POST/GET), this file runs the necessary logic or formulas, then returns the correct page view.
 
-auth.py
+**auth.py**
 
 Manages user authentication (sign up, login, session handling). Ensures only authorized users can access their dashboards and event data.
 
-routes.py
+**routes.py**
 
 Defines the URL paths (routes) for the application, mapping user navigation (e.g., /login, /createEvent) to functions in views.py and auth.py.
 
-models.py
+**models.py**
 
 Contains the data models for events, tasks, and guests. These models interact with the Azure database to store and retrieve information.
 
-templates/layouts/
+**templates/layouts/**
 
 Houses the HTML templates used throughout the app. Key pages include:
 
-createAccount.html
+**createAccount.html**
  → Create a user account
 
-createEvent.html
+**createEvent.html**
  → Define a new event
 
-addGuest.html
+**addGuest.html**
  → Add guests and manage RSVP invitations
 
-genderVisualization.html
+**genderVisualization.html**
  → Display event guest gender statistics
 
-eventOverview.html
+**eventOverview.html**
  → Overview of event details and tasks
 
 page-403.html
@@ -93,10 +93,10 @@ page-403.html
 , page-500.html
  → Error handling pages
 
-static/
+**static/**
 
 Contains all CSS, JavaScript, and image files used by the templates.
 
-run.py
+**run.py**
 
 Entry point for starting the application. Runs the Flask development server.
